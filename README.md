@@ -1,4 +1,4 @@
-PEAQ
+PESQ
 ====
 
 ITU Reference implementation: http://www.itu.int/rec/T-REC-P.862/en

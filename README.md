@@ -1,7 +1,7 @@
 Audio Metrics
 =============
 
-PESQ [ITU Recommendation P.862](http://www.itu.int/rec/T-REC-P.862/en)
+PESQ ([ITU Recommendation P.862](http://www.itu.int/rec/T-REC-P.862/en))
 ====
 
 Disclaimer: I do not own this implementation. This is ITU's reference
@@ -15,7 +15,7 @@ Changes from original:
 
 - Added a Makefile for easy compilation. 
 
-PEAQ [ITU Recommendation BS.1387](https://www.itu.int/rec/R-REC-BS.1387/en)
+PEAQ ([ITU Recommendation BS.1387](https://www.itu.int/rec/R-REC-BS.1387/en))
 ====
 
 Disclaimer: I do not own this implementation. MATLAB implementation by Peter

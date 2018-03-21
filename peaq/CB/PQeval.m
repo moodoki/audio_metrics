@@ -1,8 +1,6 @@
 function [MOVI, Fmem] = PQeval (xR, xT, Fmem)
 % PEAQ - Process one frame with the FFT model
 
-% P. Kabal $Revision: 1.1 $  $Date: 2003/12/07 13:32:58 $
-
 NF = 2048;
 Version = 'Basic';
 
@@ -21,7 +19,7 @@ X2(2,:) = PQDFTFrame (xT);
 [EP, Fmem.Adap] = PQadapt (Ehs, Fmem.Adap, Version, 'FFT');
 
 % Modulation patterns
-[M, ERavg, Fmem.Env] = PQModPatt (Es, Fmem.Env);
+[M, ERavg, Fmem.Env] = PQmodPatt (Es, Fmem.Env);
 
 % Loudness
 MOVI.Loud.NRef  = PQloud (Ehs(1,:), Version, 'FFT');
@@ -83,8 +81,8 @@ E(1,:) = Eb(1,:) + EIN;
 E(2,:) = Eb(2,:) + EIN;
 
 % Critical band spreading => "Unsmeared excitation patterns"
-Es(1,:) = PQSpreadCB (E(1,:), Version);
-Es(2,:) = PQSpreadCB (E(2,:), Version);
+Es(1,:) = PQspreadCB (E(1,:), Version);
+Es(2,:) = PQspreadCB (E(2,:), Version);
 
 %--------------------
 function [Ehs, Ef] = PQ_timeSpread (Es, Ef)

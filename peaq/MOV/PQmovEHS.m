@@ -1,8 +1,6 @@
 function EHS = PQmovEHS (xR, xT, X2)
 % Calculate the EHS MOV values
 
-% P. Kabal $Revision: 1.2 $  $Date: 2004/02/05 04:26:19 $
-
 persistent NF Nadv NL M Hw
 
 if (isempty (NL))    
@@ -22,7 +20,7 @@ EnRef  = xR(Nadv+1:NF-1+1) * xR(Nadv+1:NF-1+1)';
 EnTest = xT(Nadv+1:NF-1+1) * xT(Nadv+1:NF-1+1)';
 
 % Set the return value to be negative for small energy frames
-if (EnRef < EnThr & EnTest < EnThr)
+if (EnRef < EnThr && EnTest < EnThr)
     EHS = -1;
     return;
 end

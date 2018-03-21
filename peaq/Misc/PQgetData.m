@@ -8,8 +8,6 @@ function x = PQgetData (WAV, i, N)
 % N = 0 resets the buffer
 
 
-% P. Kabal $Revision: 1.1 $  $Date: 2003/12/07 13:34:10 $
-
 persistent Buff
 
 iB = WAV.iB + 1;
@@ -25,7 +23,7 @@ end
 
 % Check if requested data is not already in the buffer
 is = i - Buff(iB).i;
-if (is < 0 | is + N - 1 > Buff(iB).N - 1)
+if (is < 0 || is + N - 1 > Buff(iB).N - 1)
     Buff(iB).x = PQ_ReadWAV (WAV, i, Buff(iB).N);
     Buff(iB).i = i;
 end
@@ -55,5 +53,6 @@ end
 
 Ns = min (N - Nz, WAV.Nframe - i);
 if (i >= 0 & Ns > 0)
-    x(1:Nchan,Nz+1:Nz+Ns-1+1) = Amax * (wavread (WAV.Fname, [i+1 i+Ns-1+1]))';
+    [y, Fs] = audioread(WAV.Fname,  [i+1 i+Ns-1+1]);
+    x(1:Nchan,Nz+1:Nz+Ns-1+1) = Amax * (y)';
 end

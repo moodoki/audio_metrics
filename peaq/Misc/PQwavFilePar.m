@@ -1,8 +1,6 @@
 function WAV = PQwavFilePar (File)
 % Print a WAVE file header, pick up the file parameters
 
-% P. Kabal $Revision: 1.1 $  $Date: 2003/12/07 13:34:11 $
-
 persistent iB
 
 if (isempty (iB))
@@ -11,11 +9,14 @@ else
     iB = mod (iB + 1, 2);   % Only two files can be "active" at a time
 end
 
-[size WAV.Fs Nbit] = wavread (File, 'size');
-WAV.Fname = File;
-WAV.Nframe = size(1);
-WAV.Nchan = size(2);
+%[size WAV.Fs Nbit] = wavread (File, 'size');
+ai = audioinfo(File);
+WAV.Fname = ai.Filename;
+WAV.Nframe = ai.TotalSamples;
+WAV.Nchan = ai.NumChannels;
 WAV.iB = iB;   % Buffer number
+Nbit = ai.BitsPerSample
+WAV.Fs = ai.SampleRate
 
 % Initialize the buffer
 PQgetData (WAV, 0, 0);

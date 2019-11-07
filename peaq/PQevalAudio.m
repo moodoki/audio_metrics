@@ -1,4 +1,4 @@
-function PQevalAudio (Fref, Ftest, StartS, EndS)
+function ODG = PQevalAudio (Fref, Ftest, StartS, EndS)
 % Perceptual evaluation of audio quality.
 
 % - StartS shifts the frames, so that the first frame starts at that sample.
@@ -83,9 +83,9 @@ for (i = -Fstart:Np-1)
         PQframeMOV (i, MOVI);   % Output is in global MOVC
 
         % Print the MOV precursors
-        if (PQopt.Ni ~= 0 & mod (i, PQopt.Ni) == 0)
-            PQprtMOVCi (Nchan, i, MOVC);
-        end
+        %if (PQopt.Ni ~= 0 & mod (i, PQopt.Ni) == 0)
+        %    PQprtMOVCi (Nchan, i, MOVC);
+        %end
     end
 end
 
@@ -101,7 +101,7 @@ MOVB = PQavgMOVB (MOVC, Nchan, Nwup);
 ODG = PQnNet (MOVB);
 
 % Summary printout
-PQprtMOV (MOVB, ODG);
+%PQprtMOV (MOVB, ODG);
 
 %----------
 function PQ_CheckWAV (WAV)
